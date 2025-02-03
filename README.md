@@ -2,7 +2,7 @@
 
 ![PhenoLinker](imgs/phenolinker.png "Title")
 
-We present a novel system called PhenoLinker capable of associating a score to a phenotype-gene relationship by using heterogeneous information networks and a convolutional neural network-based model for graphs, which can provide an explanation for the predictions. This system can aid in the discovery of new associations and in understanding the consequences of human genetic variation.
+We present a novel system called PhenoLinker capable of associating a score to a phenotype-gene relationship by using heterogeneous information networks and a convolutional neural network-based model for graphs, which can provide an explanation for the predictions. This system can aid in the discovery of new associations and in understanding the consequences of human genetic variation. Currently under review, preprint available in [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4756046) and [ArXiv](https://arxiv.org/abs/2402.01809).
 
 We used Pytorch Geometric 2.4.0 to generate the model. December 15, 2022 version of the HPO ontology with its genes annotations.
 
@@ -32,3 +32,10 @@ In the data/ section we have all the neccesary data and scripts to generate the 
 ## Explanation Module
 
 - An example of the explanation module is available in the ``explainability.py`` in the explainaibility directory. It has an example with the gene SNCA and the HPO term HP:0100315.
+
+## How to cite
+
+```
+Mellina Andreu, Jose Luis and Bernal Escobedo, Luis and Skarmeta, Antonio and Ryten, Mina and Álvarez, Sara and Cisterna García, Alejandro and Botia, Juan,
+Phenolinker: Phenotype-Gene Link Prediction and Explanation Using Heterogeneous Graph Neural Networks. Available at SSRN: https://ssrn.com/abstract=4756046 or http://dx.doi.org/10.2139/ssrn.4756046
+```

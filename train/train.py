@@ -26,8 +26,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Generate train, eval, test splits
 transform = T.RandomLinkSplit(
-    num_val=0,
-    num_test=0,
+    num_val=0.15,
+    num_test=0.15,
     disjoint_train_ratio=0.3,
     neg_sampling_ratio=4.0,
     edge_types=("phenotype", "related_to", "gene"),

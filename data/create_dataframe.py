@@ -4,16 +4,10 @@ import torch
 from torch_geometric.data import HeteroData
 import numpy as np
 
-genes = '/home/mellina/tfm/src/data/exACGenes.csv'
+genes = '/home/mellina/tfm/src/data/genes.csv'
 phenotypes = '/home/mellina/tfm/src/data/phenotypes.csv'
-gen_edges = '/home/mellina/tfm/src/data/phenotypes_to_genes.csv'
+gen_edges = '/home/mellina/tfm/src/data/phenotypes_to_genes.tsv'
 phen_edges = '/home/mellina/tfm/src/data/phenotype_edges.csv'
-
-genes_expr = '/home/mellina/tfm/src/data/exprGenes.csv'
-genes_locus = '/home/mellina/tfm/src/data/ComplexityGenes.csv'
-genes_prot = '/home/mellina/tfm/src/data/proteinGenes.csv'
-genes_genomic = '/home/mellina/tfm/src/data/genomicGenes.csv'   
-genes_all = '/home/mellina/tfm/src/data/allGenes.csv'
 
 class SequenceEncoder(object):
     def __init__(self, model_name='pritamdeka/BioBERT-mnli-snli-scinli-scitail-mednli-stsb', device=None):
@@ -78,7 +72,7 @@ pheno_x, pheno_mapping = load_node_csv(
 
 
 gene_x, gene_mapping = load_node_csv(
-    genes_all, index_col='gene', encoders={
+    genes, index_col='gene', encoders={
           "ExACpLI":IdentityEncoder(),
           "ExACpRec":IdentityEncoder(),
           "ExACpNull":IdentityEncoder(),
@@ -133,7 +127,7 @@ gene_x, gene_mapping = load_node_csv(
           "CountsOverlap":IdentityEncoder(),
           "CountsProtCodOverlap":IdentityEncoder(),
           "StringCombined":IdentityEncoder(),
-})
+}, sep='\t')
 
 
 edge_index, edge_label = load_edge_csv(

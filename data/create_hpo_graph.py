@@ -1,8 +1,6 @@
 import networkx as nx
 import obonet
 import pandas as pd
-from sentence_transformers import SentenceTransformer
-import torch
 
 url = 'https://github.com/obophenotype/human-phenotype-ontology/releases/download/v2022-12-15/hp.obo'
 graph = obonet.read_obo(url)

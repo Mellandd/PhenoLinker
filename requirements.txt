@@ -1,0 +1,7 @@
+torch
+obonet
+pandas
+numpy
+captum
+sentence_transformers
+torch_geometric==2.4.0

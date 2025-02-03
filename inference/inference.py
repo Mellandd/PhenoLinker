@@ -34,7 +34,7 @@ with torch.no_grad():
 
 edge_label_index = data["phenotype", "related_to", "gene"].edge_index
 
-# Explainability example: Gene SNCA with phenotype HP:0100315
+# Inference example: Gene SNCA with phenotype HP:0100315
 
 index = torch.tensor([[mapping_gene['SNCA']], [mapping_phen['HP:0100315']]])
 edge_label_index = (("phenotype", "related_to", "gene"), index)

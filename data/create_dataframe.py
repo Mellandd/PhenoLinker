@@ -4,10 +4,11 @@ import torch
 from torch_geometric.data import HeteroData
 import numpy as np
 
-genes = '/home/mellina/tfm/src/data/genes.csv'
-phenotypes = '/home/mellina/tfm/src/data/phenotypes.csv'
-gen_edges = '/home/mellina/tfm/src/data/phenotypes_to_genes.tsv'
-phen_edges = '/home/mellina/tfm/src/data/phenotype_edges.csv'
+# Some files are not uploaded to the repository for its size. Read README to download them in this folder.
+genes = 'genes.csv'
+phenotypes = 'phenotypes.csv'
+gen_edges = 'phenotypes_to_genes.tsv'
+phen_edges = 'phenotype_edges.csv'
 
 class SequenceEncoder(object):
     def __init__(self, model_name='pritamdeka/BioBERT-mnli-snli-scinli-scitail-mednli-stsb', device=None):

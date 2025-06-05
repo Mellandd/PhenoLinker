@@ -1,4 +1,4 @@
-torch==2.3.1
+torch==2.7.1
 obonet==1.1.0
 pandas==2.2.3
 numpy==2.1.2

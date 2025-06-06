@@ -12,7 +12,7 @@ from gnn import *
 
 torch.cuda.empty_cache()
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-data = torch.load('../data/dataframe.pt')
+data = torch.load('../data/dataframe.pt', weights_only=False)
 data = T.ToUndirected()(data)
 data["phenotype"].x = data["phenotype"].x.to(torch.float32)
 data["gene"].x = data["gene"].x.to(torch.float32)
@@ -30,13 +30,12 @@ df_phen = pd.read_csv(phenotypes, index_col='Phenotypes')
 mapping_phen = {index: i for i, index in enumerate(df_phen.index.unique())}
 mapping_phen_reverse = {i: index for i, index in enumerate(df_phen.index.unique())}
 
-model = torch.load('../data/model.pt')
+model = torch.load('../data/model.pt', weights_only=False)
 model = model.to(device)
 
 # Example of interpretability: Gene SNCA and phenotype HP:0100315
 
-index = torch.tensor([[mapping_gene['SNCA']], [mapping_phen['HP:0100315']]])
-edge_label_index = (("phenotype", "related_to", "gene"), index)
+edge_label_index = torch.tensor([[mapping_gene['SNCA']], [mapping_phen['HP:0100315']]])
 
 explainer = Explainer(
     model=model,
@@ -57,7 +56,7 @@ explainer = Explainer(
 explanation = explainer(
     data.x_dict,
     data.edge_index_dict,
-    index = index,
+    index = 0,
     edge_label_index = edge_label_index
 )
 print(f'Generated model explanations in {explanation.available_explanations}')

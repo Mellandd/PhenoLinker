@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..',
 from gnn import *
 torch.cuda.empty_cache()
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-data = torch.load('../data/dataframe.pt')
+data = torch.load('../data/dataframe.pt', weights_only=False)
 data = T.ToUndirected()(data)
 data["phenotype"].x = data["phenotype"].x.to(torch.float32)
 data["gene"].x = data["gene"].x.to(torch.float32)
@@ -26,7 +26,7 @@ df_phen = pd.read_csv(phenotypes, index_col='Phenotypes')
 mapping_phen = {index: i for i, index in enumerate(df_phen.index.unique())}
 mapping_phen_reverse = {i: index for i, index in enumerate(df_phen.index.unique())}
 
-model = torch.load('../data/model.pt')
+model = torch.load('../data/model.pt', weights_only=False)
 model = model.to(device)
 
 with torch.no_grad():  
@@ -37,7 +37,7 @@ edge_label_index = data["phenotype", "related_to", "gene"].edge_index
 # Inference example: Gene SNCA with phenotype HP:0100315
 
 index = torch.tensor([[mapping_gene['SNCA']], [mapping_phen['HP:0100315']]])
-edge_label_index = (("phenotype", "related_to", "gene"), index)
+edge_label_index = index
 
 score = model.decode(x_dict, edge_label_index)
 

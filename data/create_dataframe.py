@@ -7,8 +7,16 @@ import numpy as np
 # Some files are not uploaded to the repository for its size. Read README to download them in this folder.
 genes = 'genes.csv'
 phenotypes = 'phenotypes.csv'
-gen_edges = 'phenotypes_to_genes.tsv'
+gene_edges = 'phenotypes_to_genes.tsv'
 phen_edges = 'phenotype_edges.csv'
+
+# We filter the genes in phenotype_to_genes.tsv (from HPO), to only use
+# genes with features from genes.csv
+
+df_genes = pd.read_csv(genes)
+df_gene_edges = pd.read_csv(gene_edges, sep='\t')
+df_gene_edges = df_gene_edges[df_gene_edges['entrez-gene-symbol'].isin(df_genes['gene'].to_list())]
+df_gene_edges.to_csv(gene_edges, sep='\t', index=False)
 
 class SequenceEncoder(object):
     def __init__(self, model_name='pritamdeka/BioBERT-mnli-snli-scinli-scitail-mednli-stsb', device=None):
@@ -71,7 +79,6 @@ pheno_x, pheno_mapping = load_node_csv(
         'Definition': SequenceEncoder()
     })
 
-
 gene_x, gene_mapping = load_node_csv(
     genes, index_col='gene', encoders={
           "ExACpLI":IdentityEncoder(),
@@ -128,15 +135,15 @@ gene_x, gene_mapping = load_node_csv(
           "CountsOverlap":IdentityEncoder(),
           "CountsProtCodOverlap":IdentityEncoder(),
           "StringCombined":IdentityEncoder(),
-}, sep='\t')
-
+}, sep=',')
 
 edge_index, edge_label = load_edge_csv(
-    gen_edges,
+    gene_edges,
     src_index_col='HPO-id', 
     src_mapping=pheno_mapping,
     dst_index_col='entrez-gene-symbol',
     dst_mapping=gene_mapping,
+    sep='\t'
 )
 
 data = HeteroData()

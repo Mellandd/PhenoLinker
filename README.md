@@ -6,6 +6,18 @@ We present a novel system called PhenoLinker capable of associating a score to a
 
 We used Pytorch Geometric 2.4.0 to generate the model. December 15, 2022 version of the HPO ontology with its genes annotations.
 
+## Requirements
+
+The requires libraries are in `requirements.txt`. Additionally, to support `NeighborSampler`, PyG requires either `pyg-lib` or `torch-sparse` to work.
+
+The way to install `torch-sparse` is:
+
+``
+pip install pyg-lib -f https://data.pyg.org/whl/torch-2.7.0+${CUDA}.html
+``
+
+where `${CUDA$}` should be replaced by `cpu`, `cu118`, `cu126`, or `cu128` depending on your PyTorch installation.
+
 ## Features
 
 - PhenoLinker is a link prediction GNN model based on HPO. It is able to predict associations between genes and phenotype terms from the HPO ontology. For a given relation, it returns a score from 0 to 1, which symbolises the probability of that relation being real.

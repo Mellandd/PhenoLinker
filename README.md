@@ -13,7 +13,7 @@ The requires libraries are in `requirements.txt`. Additionally, to support `Neig
 The way to install `torch-sparse` is:
 
 ``
-pip install pyg-lib -f https://data.pyg.org/whl/torch-2.7.0+${CUDA}.html
+pip install torch-sparse torch-scatter -f https://data.pyg.org/whl/torch-2.7.0+${CUDA}.html
 ``
 
 where `${CUDA$}` should be replaced by `cpu`, `cu118`, `cu126`, or `cu128` depending on your PyTorch installation.

@@ -48,6 +48,16 @@ In the data/ section we have all the neccesary data and scripts to generate the 
 ## How to cite
 
 ```
-Mellina Andreu, Jose Luis and Bernal Escobedo, Luis and Skarmeta, Antonio and Ryten, Mina and Álvarez, Sara and Cisterna García, Alejandro and Botia, Juan,
-Phenolinker: Phenotype-Gene Link Prediction and Explanation Using Heterogeneous Graph Neural Networks. Available at SSRN: https://ssrn.com/abstract=4756046 or http://dx.doi.org/10.2139/ssrn.4756046
+@article{PhenoLinker,
+title = {PhenoLinker: Phenotype-gene link prediction and explanation using heterogeneous graph neural networks},
+journal = {Artificial Intelligence in Medicine},
+volume = {167},
+pages = {103177},
+year = {2025},
+issn = {0933-3657},
+doi = {https://doi.org/10.1016/j.artmed.2025.103177},
+url = {https://www.sciencedirect.com/science/article/pii/S0933365725001125},
+author = {Jose L. {Mellina Andreu} and Luis Bernal and Antonio F. Skarmeta and Mina Ryten and Sara Álvarez and Alejandro Cisterna García and Juan A. Botía},
+abstract = {The association of a given human phenotype with a genetic variant remains a critical challenge in biomedical research. We present PhenoLinker, a novel graph-based system capable of associating a score to a phenotype-gene relationship by using heterogeneous information networks and a convolutional neural network-based model for graphs, which can provide an explanation for the predictions. Unlike previous approaches, PhenoLinker integrates gene and phenotype attributes, while maintaining explainability through Integrated Gradients. PhenoLinker consistently outperforms existing models in both retrospective and temporal validation tasks. This system can aid in the discovery of new associations and in understanding the consequences of human genetic variation.}
+}
 ```

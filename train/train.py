@@ -22,7 +22,7 @@ data = torch.load('../data/dataframe.pt', weights_only=False)
 data = T.ToUndirected()(data)
 data["phenotype"].x = data["phenotype"].x.to(torch.float32)
 data["gene"].x = data["gene"].x.to(torch.float32)
-device = torch.device('mps' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Generate train, eval, test splits
 transform = T.RandomLinkSplit(
